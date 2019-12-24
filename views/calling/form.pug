@@ -1,0 +1,82 @@
+extends ../layout
+
+block header
+  nav(class="navbar navbar-expand-md navbar-dark fixed-top bg-dark")
+    a(class="navbar-brand" href="/") Área Administrativa
+    button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation")
+      span(class="navbar-toggler-icon")
+    div(class="collapse navbar-collapse" id="navbarCollapse")
+      ul(class="navbar-nav mr-auto")
+        li(class="nav-item active")
+          a(class="nav-link" href="/users/customers") Clientes
+        li(class="nav-item")
+          a(class="nav-link" href="/users/employees") Funcionários
+        li(class="nav-item")
+          a(class="nav-link" href="/users") Todos os Usuários
+      a(class="btn btn-lg btn-outline-light font-weight-bolder", href="/") Sair
+
+block content
+  main(role="main" class="container")
+    div(class="container w-50")
+      
+    if success
+    
+      div(class="px-3 py-2 mt-3 mb-2 text-light bg-success rounded box-shadow row")
+        div(class="col-10")
+          p(class="font-weight-bolder p-2 my-1") #{message} #{user.nome}
+        div(class="col-2")
+          button(class="btn btn-light m-2 float-right" type="button")
+            a(class="text-success" href="/calling/") Voltar
+        
+    else if error
+      
+      div(class="container w-50 mt-3")
+        div(class="px-3 py-2 mt-3 mb-2 text-light bg-danger rounded box-shadow")
+          p(class="lh-100 font-weight-bolder my-1") #{message}
+          p
+            small #{error}
+        div(class="w-25 text-center mx-auto bg-danger rounded")
+          button(class="btn btn-outline-danger m-2" type="button")
+            a(class="text-white" href="/calling/create") Voltar
+          
+    else
+      
+      div(class="container w-50")
+        h2(class="text-center")=title
+
+        form(method='POST' action='/calling/create/new')
+
+          div.form-group.mt4
+            label(class="form-check-label" for="chamado") Encaminhar para
+            select#chamado.form-control
+                option(value="Limpeza") Limpeza
+                option(value="Manutencao") Manutenção
+                option(value="Reparo") Reparo
+                
+          div.form-group.mt-4
+            label(for='descricao') Resumo:
+            textarea#resumo.form-control(rows="3" name='descricao')
+                    
+          div.form-group.row.mt4
+            legend.col-form-label.col-sm-2(for="status") Status
+            div.col-sm-10
+              div.form-check
+                input(class="form-check-input" type="radio" name="status" id="status" value="Aberto" checked)
+                label(class="form-check-label" for="status") Aberto
+              div.form-check
+                input(class="form-check-input" type="radio" name="status" id="status" value="Encaminhado")
+                label(class="form-check-label" for="status") Encaminhado
+              div.form-check
+                input(class="form-check-input" type="radio" name="status" id="status" value="Em atendimento")
+                label(class="form-check-label" for="status") Em atendimento
+              div.form-check
+                input(class="form-check-input" type="radio" name="status" id="status" value="Fechado")
+                label(class="form-check-label" for="status") Fechado
+                
+          div.form-group.mt4
+            label(class="form-check-label" for="encaminhadoPara") Encaminhar para
+            select#encaminhadoPara.form-control
+              each user in users
+                option(value="#{user._id}") #{user.nome}
+
+          button.btn.btn-primary.mb-5(type='submit') Salvar

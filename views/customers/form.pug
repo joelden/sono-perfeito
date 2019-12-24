@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  header
+    nav(class="navbar navbar-expand-md navbar-dark fixed-top bg-dark")
+      a(class="navbar-brand" href="#") Sono Perfeito
+      button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation")
+        span(class="navbar-toggler-icon")
+      div(class="collapse navbar-collapse" id="navbarCollapse")
+        ul(class="navbar-nav mr-auto")
+          li(class="nav-item active")
+            a(class="nav-link" href="#") Home
+          li(class="nav-item")
+            a(class="nav-link" href="#") Serviços
+          li(class="nav-item")
+            a(class="nav-link" href="#") Contatos
+          
+  div(class="container w-50 mt-5")
+    h1=title
+
+    form(method='POST' action='create/new')
+      div.form-group.mt-4
+        label(for='nome') Nome:
+        input#nome.form-control(type='text' placeholder='Digite seu nome' name='nome' required='true' value=(undefined===user ? '' : user.nome) )
+      div.form-group.mt-4
+        label(for='email') Email:
+        input#email.form-control(type='text' placeholder='Digite seu email' name='email' required='true' value=(undefined===user ? '' : user.email))
+      div.form-group.mt-4
+        label(for='senha') Senha:
+        input#senha.form-control(type='password' name='senha' value=(undefined===user ? '' : user.senha) )
+      button.btn.btn-primary.mb-5(type='submit') Submit
+    if errors 
+      ul
+        for error in errors
+          li!= error.msg

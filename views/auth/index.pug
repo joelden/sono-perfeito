@@ -1,0 +1,40 @@
+extends ../layout
+
+block content
+  header
+    nav(class="navbar navbar-expand-md navbar-dark fixed-top bg-dark")
+      a(class="navbar-brand" href="/") Sono Perfeito
+      button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation")
+        span(class="navbar-toggler-icon")
+      div(class="collapse navbar-collapse" id="navbarCollapse")
+        ul(class="navbar-nav mr-auto")
+          li(class="nav-item")
+            a(class="nav-link" href="services") Serviços
+          li(class="nav-item")
+            a(class="nav-link" href="produtos") Produtos
+          li(class="nav-item")
+            a(class="nav-link" href="contatos") Contatos
+        
+        
+  div(class="container w-25 mt-5")
+    form(class="form-signin" action="auth" method="post")
+      div(class="text-center mb-5")
+        h1(class="h3 mb-3 font-weight-normal")=title
+
+      div(class="form-label-group mt-4")
+        label(for="inputEmail") Email
+        input(type="email" id="inputEmail" class="form-control mt-2" placeholder="Email address" required autofocus)
+
+      div(class="form-label-group mt-4")
+        label(for="inputPassword") Senha
+        input(type="password" id="inputPassword" class="form-control mt-2" placeholder="Password" required)
+
+      div(class="checkbox text-center mt-4")
+        button(class="btn btn-lg btn-primary btn-block mb-2" type="submit") Entrar
+        label #[input(class="mb-5" type="checkbox" value="remember-me")] Lembrar-me
+        p
+          small(id="passwordHelpBlock" class="form-text text-muted") Ainda não possui cadastro? 
+            a(href="") Então clique aqui.
+    
+      if error    
+        div(class="alert alert-danger" role="alert") #{error}

@@ -1,0 +1,46 @@
+extends ../layout
+
+block content
+  header
+    nav(class="navbar navbar-expand-md navbar-dark fixed-top bg-dark")
+      a(class="navbar-brand" href="/") Sono Perfeito
+      button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation")
+        span(class="navbar-toggler-icon")
+      div(class="collapse navbar-collapse" id="navbarCollapse")
+        ul(class="navbar-nav mr-auto")
+          li(class="nav-item active")
+            a(class="nav-link" href="/") Home
+          li(class="nav-item")
+            a(class="nav-link" href="services") Serviços
+          li(class="nav-item")
+            a(class="nav-link" href="#") Contatos
+        
+        
+  div(class="container w-25 mt-5")
+    form(class="form-signin" action="register" method="post")
+      div(class="text-center mb-5")
+        h1(class="h3 mb-3 font-weight-normal")=title
+
+      div(class="form-label-group mt-4")
+        label(for="inputNome") Nome
+        input(type="text" id="inputNome" class="form-control mt-2" placeholder="Nome do Usuário" required autofocus)
+
+      div(class="form-label-group mt-4")
+        label(for="inputEmail") Email
+        input(type="email" id="inputEmail" class="form-control mt-2" placeholder="Email address" required autofocus)
+
+      div(class="form-label-group mt-4")
+        label(for="inputPassword") Senha
+        input(type="password" id="inputPassword" class="form-control mt-2" placeholder="Password" required)
+
+      div(class="checkbox text-center mt-4")
+        button(class="btn btn-lg btn-primary btn-block mb-3" type="submit") Registrar-se
+        label #[input(class="mb-5" type="checkbox" value="remember-me")] Remember me
+        
+      if sucess 
+        div(class="alert alert-sucess" role="alert")
+          p #{message}
+      if error
+        div(class="alert alert-danger" role="alert")
+          p #{message}
+          p #{error}

@@ -1,0 +1,49 @@
+extends ../layout
+
+block content
+  block header
+    nav(class="navbar navbar-expand-md navbar-dark fixed-top bg-dark")
+      a(class="navbar-brand" href="/admin") Área Administrativa
+      button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation")
+        span(class="navbar-toggler-icon")
+      div(class="collapse navbar-collapse" id="navbarCollapse")
+        ul(class="navbar-nav mr-auto")
+          li(class="nav-item")
+            a(class="nav-link" href="/") Home
+          li(class="nav-item")
+            a(class="nav-link" href="users") Usuários
+          li(class="nav-item")
+            a(class="nav-link" href="services") Serviços
+          li(class="nav-item")
+            a(class="nav-link" href="calling") Chamados
+        a(class="btn btn-lg btn-outline-light font-weight-bolder", href="/") Sair
+
+  main(role="main" class="container")
+    div(class="my-3 p-3 bg-white rounded box-shadow")
+      h2(class="border-bottom border-gray pb-2 mb-0")= title
+      
+      div(class="card-deck")
+        div(class="card rounded text-center bg-light mb-3" style="width: 25rem;")
+          #img-customers
+            a(href="users/customers")
+              img(class="card-img-top" src="images/family3.svg" alt="Serviços de Instalação")
+          div(class="card-body")
+            h3(class="card-title") Clientes
+            p(class="card-text") Área de acesso às informações dos clientes cadastrados na base de dados
+            p(class="card-text") Serviços solicitados, compras efetuadas, pagamentos pendentes e demais informações.
+        div(class="card rounded text-center bg-light mb-3" style="width: 25rem;")
+          #img-employee
+            a(id="img-maintenance" href="users/employees")
+              img(class="card-img-top" src="images/technical.svg" alt="Serviços de Manutenção")
+          div(class="card-body")
+            h3(class="card-title") Técnicos
+            p(class="card-text") Área de acesso às informações dos técnicos cadastrados na base de dados
+            p(class="card-text") Aqui é possível cadastrar, deletar e fazer alterações nos dados dos técnicos.
+        div(class="card rounded text-center bg-light mb-3" style="width: 25rem;")
+          #img-support
+            a(div="img-cogwheel" href="calling")
+              img(class="card-img-top" src="images/chamados3.svg" alt="Venda de Peças")
+            div(class="card-body")
+              h3(class="card-title") Chamados
+              p(class="card-text") Área de acesso às informações dos chamados cadastrados na base de daos
+              p(class="card-text") Nesta área podemos realizar chamados, monitorar chamados abertos, encaminhar chamados para algum técnico, etc.

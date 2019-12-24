@@ -1,0 +1,45 @@
+extends layout
+
+block header
+  nav(class="navbar navbar-expand-md navbar-dark fixed-top bg-dark")
+    a(class="navbar-brand" href="/") Sono Perfeito
+    button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation")
+      span(class="navbar-toggler-icon")
+    div(class="collapse navbar-collapse" id="navbarCollapse")
+      ul(class="navbar-nav mr-auto")
+        li(class="nav-item")
+          a(class="nav-link" href="services") Serviços
+        li(class="nav-item")
+          a(class="nav-link" href="produtos") Produtos
+        li(class="nav-item")
+          a(class="nav-link" href="contatos") Contatos
+      a(class="btn btn-lg btn-outline-light font-weight-bolder", href="/admin") Área Administrativa
+
+block content
+  main(role="main", class="container-fluid")
+    div(class="hero-image")
+      div(class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center")
+        div(class="col-md-5 p-lg-5 mx-auto my-2")
+          h1(class="display-4 font-weight-normal")= title
+          p(class="lead font-weight-bolder") Soluções em Serviços de Instalação e Manutenção de Centrais de Ar é com a #{title}
+          a(class="btn btn-outline-dark font-weight-bolder", href="calling/create") Abrir Chamado
+          
+      div(class="card-deck col-md-9 mx-auto")
+        div(class="card rounded-circle text-center bg-light mb-3" style="width: 20rem;")
+          #img-air
+            a(href="#")
+              img(class="card-img-top" src="images/air3.svg" alt="Serviços de Instalação")
+          div(class="card-body")
+            h4(class="card-title") Instalação
+        div(class="card rounded-circle text-center bg-light mb-3" style="width: 20rem;")
+          #img-maintenance
+            a(id="img-maintenance" href="#")
+              img(class="card-img-top" src="images/maintenance3.svg" alt="Serviços de Manutenção")
+          div(class="card-body")
+            h4(class="card-title") Manutenção
+        div(class="card rounded-circle text-center bg-light mb-3" style="width: 20rem;")
+          #img-cogwheel
+            a(div="img-cogwheel" href="#")
+              img(class="card-img-top" src="images/cogwheel3.svg" alt="Venda de Peças")
+            div(class="card-body")
+              h4(class="card-title") Venda de Peças

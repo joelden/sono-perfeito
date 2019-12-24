@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  header
+    nav(class="navbar navbar-expand-md navbar-dark fixed-top bg-dark")
+      a(class="navbar-brand" href="#") Sono Perfeito
+      button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation")
+        span(class="navbar-toggler-icon")
+      div(class="collapse navbar-collapse" id="navbarCollapse")
+        ul(class="navbar-nav mr-auto")
+          li(class="nav-item active")
+            a(class="nav-link" href="#") Home
+          li(class="nav-item")
+            a(class="nav-link" href="services") Serviços
+          li(class="nav-item")
+            a(class="nav-link" href="#") Contatos
+      a(class="btn btn-outline-light font-weight-bolder", href="/services/create") Cadastrar Serviço
+
+    h1= title
+
+    ul
+      li #{service.nome}
+      li #{service.descricao}
+
+      else
+        li Não há serviços cadastrados.

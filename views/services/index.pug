@@ -1,0 +1,37 @@
+extends ../layout
+
+block header
+  nav(class="navbar navbar-expand-md navbar-dark fixed-top bg-dark")
+    a(class="navbar-brand" href="/admin") Área Administrativa
+    button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation")
+      span(class="navbar-toggler-icon")
+    div(class="collapse navbar-collapse" id="navbarCollapse")
+      ul(class="navbar-nav mr-auto")
+        li(class="nav-item")
+          a(class="nav-link" href="/") Home
+        li(class="nav-item")
+          a(class="nav-link" href="users") Usuários
+        li(class="nav-item")
+          a(class="nav-link" href="services") Serviços
+        li(class="nav-item")
+          a(class="nav-link" href="calling") Chamados
+      a(class="btn btn-lg btn-outline-light font-weight-bolder", href="/") Sair
+
+block content
+  main(role="main" class="container")
+    div(class="container mt-4")
+      
+      div(class="d-flex align-items-center p-3 mx-auto mt-4 text-white-50 bg-info rounded box-shadow w-75")
+        div(class="lh-100")
+          h3(class="mt-6 text-light lh-100")= title
+      
+    each service in services
+      
+      div(class="media text-muted mx-auto mb-3 py-3 w-75")
+        div(class="media-body m-3 p-0 lh-125 border border-dark rounded d-inline")
+          div(class="d-flex lead px-4 pt-2 justify-content-between align-items-center d-inline w-100")
+            p(class="lead") Nome do Serviço: 
+              strong(class="text-dark") #{service.nome}
+        div(class="d-flex justify-content-between my-2 text-right float-right w-25")
+          button(class="btn btn-primary mt-1 px-1 py-3 w-100" type="button")
+            a(class="text-white" href="/services/") Chamados de #{service.nome}

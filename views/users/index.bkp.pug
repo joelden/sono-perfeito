@@ -1,0 +1,44 @@
+extends ../layout
+
+block content
+  header
+    nav(class="navbar navbar-expand-md navbar-dark fixed-top bg-dark")
+      a(class="navbar-brand" href="/") Sono Perfeito
+      button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation")
+        span(class="navbar-toggler-icon")
+      div(class="collapse navbar-collapse" id="navbarCollapse")
+        ul(class="navbar-nav mr-auto")
+          li(class="nav-item active")
+            a(class="nav-link" href="/") Home
+          li(class="nav-item")
+            a(class="nav-link" href="services") Serviços
+          li(class="nav-item")
+            a(class="nav-link" href="#") Contatos
+        a(class="btn btn-lg btn-outline-light font-weight-bolder", href="/users/create") Cadastrar Novo Usuário
+
+  main(role="main" class="container")
+    div(class="my-3 p-3 bg-white rounded box-shadow")
+      h3(class="border-bottom border-gray pb-2 mb-0")= title
+
+    each user in users
+      
+      div.row
+        div.col.col-md-9
+          div(class="media text-muted pt-3")
+            div(class="media-body pb-3 mb-0 lh-125 border-bottom border-gray")
+              div(class="d-flex justify-content-between align-items-center w-100")
+                strong(class="text-gray-dark") Nome: 
+                  a(href="#") #{user.nome}
+                span(class="d-block") @#{user.perfil}
+        div.col.col-md-3
+          div.row
+            div.col.col-md-4
+              a(href="/users/delete" + user._id) Excluir
+            div.col.col-md-4
+              a(href="/users/update") Alterar
+            div.col.col-md-4
+              a(href="/users/" + user._id) Detalhes
+
+    else
+      div(class="alert alert-danger" role="alert")
+        strong(class="text-center") Não há usuários cadastrados
